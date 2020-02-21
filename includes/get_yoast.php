@@ -9,10 +9,13 @@
 
 function bre_get_yoast( $post_ID = false ) {
 
+    $yoast = $_GET['yoast'];
+    $show_yoast = filter_var($yoast, FILTER_VALIDATE_BOOLEAN);
+
     include_once ( ABSPATH . 'wp-admin/includes/plugin.php' );
 
     // check if yoast is active before doing anything
-    if ( $post_ID && is_plugin_active( 'wordpress-seo/wp-seo.php' ) ) {
+    if ( $post_ID && is_plugin_active( 'wordpress-seo/wp-seo.php' ) && $show_yoast) {
 
         // get fields
         $wpseo_frontend = WPSEO_Frontend::get_instance();
